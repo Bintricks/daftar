@@ -11,7 +11,8 @@
 
 class Note
 	constructor: (@title,@body) ->
-		# ...
+		@time = (new Date).toISOString()
+
 	# non static members
 	id:""
 	comments:[]
@@ -21,6 +22,7 @@ class Note
 		id       : String,
 		title    : String,
 		body     : String,
+		time     : String,
 		comments : Array		
 	}
 	

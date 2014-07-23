@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------------------
 @Project   : Daftar | Smart notes and todos management application
 @Author    : Sameh Kamal
-@Module    : dbutil Class | class that contain mongodb data communication
+@Module    : dbmanager Class | class contains mongodb communication management
 @Copyright : 2014 Bintricks
 @License   : The MIT License
 @Comments  : N/A
@@ -39,9 +39,11 @@ class DbManager
 		newnote        = new notes_model noteObj
 		newnote.save (err,dt)->
 			if err
-				console.log err
-			console.log "Note Created: #{dt.title} !"
+				echo err_msg err.message
+			else
+				echo CMD_STRINGS.INF_NOTE_CREATED
 			DbManager.busy = false
+			setTimeout DafDbMan.close_connection,50
 
 # register to node root
-root.DbManager = DbManager
+root.DafDbMan = new DbManager

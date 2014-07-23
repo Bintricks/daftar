@@ -4,12 +4,27 @@
 # - Module      : argument-processor
 # - Description :
 # ------------------------------------------------------------------------------
-echo = console.log
 
 program = require 'commander'
-fn_args = require 'minimist'
 
-argv = fn_args process.argv.slice 2
-create_new = argv.n?
+program
+  .version 'daftar v0.0.1'
+  .option  'note'  , 'Add new note'
+  .option  'todo'  , 'Add new todo'  
+  .parse(process.argv);
 
-echo arg
+argv    = (require 'minimist') process.argv.slice 2
+echo argv
+root.CMD_TYPE = 
+  ADD_NOTE : 0
+  ADD_TODO : 1
+  GET_NOTE : 2
+  GET_TODO : 3
+
+echo program
+args = argv._
+
+if args.length > 0
+  key = args[0]
+    
+  

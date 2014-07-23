@@ -1,0 +1,5 @@
+require './place'
+require './contact'
+require './tag'
+require './time'
+require './note'
